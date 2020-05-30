@@ -56,7 +56,7 @@ export default {
 
   proxy: {
     '/api/': {
-      target: process.env.API_ENDPOINT,
+      target: "http://127.0.0.1:8080/api",
       pathRewrite: { '^/api/': '' }
     }
   },

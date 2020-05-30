@@ -2,9 +2,14 @@ Web demo search solr
 
 ## Build Setup Front
 ### Create file .env - link to backend 
-
+### Vaop file nuxt.config.js
 ```
-API_ENDPOINT= http://localhost:5000/api # link backend
+proxy: {
+    '/api/': {
+      target: "http://127.0.0.1:8080/api" ,  // link server backend
+      pathRewrite: { '^/api/': '' }
+    }
+  },
 ```
 
 ```
