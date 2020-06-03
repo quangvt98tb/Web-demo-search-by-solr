@@ -27,3 +27,11 @@ export default {
   }
 };
 </script>
+
+<style>
+.v-content {
+  background-image: url("/wallpapers.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+</style>
