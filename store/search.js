@@ -40,6 +40,10 @@ export const actions = {
                 else {
                     data.hightlight[i].description[0] = replaceAllText(data.hightlight[i].description[0], '_', ' ');
                 }
+                if (!data.hightlight[i].content) { }
+                else {
+                    data.hightlight[i].content[0] = replaceAllText(data.hightlight[i].content[0], '_', ' ');
+                }
             }
 
             commit('SET_DATA_SEARCH', data)
@@ -70,6 +74,14 @@ export const actions = {
                 if (!data.hightlight[i].description) { }
                 else {
                     data.hightlight[i].description[0] = replaceAllText(data.hightlight[i].description[0], '_', ' ');
+                }
+                if (!data.hightlight[i].content) { }
+                else {
+                    data.hightlight[i].content[0] = replaceAllText(data.hightlight[i].content[0], '_', ' ');
+                }
+                if (!data.hightlight[i].topic) { }
+                else {
+                    data.hightlight[i].topic[0] = replaceAllText(data.hightlight[i].topic[0], '_', ' ');
                 }
 
             }

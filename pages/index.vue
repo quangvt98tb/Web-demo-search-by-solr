@@ -15,12 +15,6 @@
           </v-col>
           <v-row>
             <v-col cols="4">
-              <v-btn>
-                <v-checkbox v-model="word_similar" class="mx-2" label="Từ đồng nghĩa"></v-checkbox>
-              </v-btn>
-            </v-col>
-
-            <v-col cols="4">
               <v-btn @click="searchDetail">Tìm kiếm nâng cao</v-btn>
             </v-col>
 
@@ -119,31 +113,38 @@ export default {
     async search() {
       const dataReq = {
         full_text: this.textSearch,
-        word_similar: this.word_similar,
         rows: this.rows
       };
       await this.PostText(dataReq);
       for (let i = 0; i < this.dataRes.results.length; i++) {
         // highlight description
         if (!this.dataRes.hightlight[i].description) {
-          this.dataRes.results[i].description_highlight = this.dataRes.results[
-            i
-          ].description;
+          if (!this.dataRes.hightlight[i].content) {
+            this.dataRes.results[
+              i
+            ].description_highlight = this.dataRes.results[i].description;
+          } else {
+            this.dataRes.results[i].description_highlight =
+              "..." + this.dataRes.hightlight[i].content[0];
+          }
         } else {
           this.dataRes.results[
             i
           ].description_highlight = this.dataRes.hightlight[i].description[0];
         }
         // highlight topic
-        // if (!this.dataRes.hightlight[i].topic) {
-        //   this.dataRes.results[i].topic_highlight = this.dataRes.results[
-        //     i
-        //   ].topic;
-        // } else {
-        //   this.dataRes.results[i].topic_highlight = this.dataRes.hightlight[
-        //     i
-        //   ].topic[0];
-        // }
+        if (!this.dataRes.hightlight[i].topic) {
+          this.dataRes.results[i].topic_h = this.dataRes.results[i].topic;
+        } else {
+          this.dataRes.results[i].topic_h = this.dataRes.hightlight[i].topic[0];
+        }
+
+        // highlight title
+        if (!this.dataRes.hightlight[i].title) {
+          this.dataRes.results[i].title_h = this.dataRes.results[i].autitlethor;
+        } else {
+          this.dataRes.results[i].title_h = this.dataRes.hightlight[i].title[0];
+        }
       }
       this.list = Object.assign({}, this.dataRes.results);
     },
