@@ -12,6 +12,7 @@
           </v-btn>
         </v-col>
         <v-col cols="2">
+          <div></div>
           <v-btn @click="searchFullText">Tìm kiếm Full Text</v-btn>
         </v-col>
       </v-row>
