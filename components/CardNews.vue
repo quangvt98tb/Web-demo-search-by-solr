@@ -7,7 +7,7 @@
         </div>
 
         <v-list-item-title class="mb-1">
-          <h4 v-html="title"></h4>
+          <h3 v-html="title"></h3>
         </v-list-item-title>
         <v-list-item-subtitle v-html="description"></v-list-item-subtitle>
       </v-list-item-content>

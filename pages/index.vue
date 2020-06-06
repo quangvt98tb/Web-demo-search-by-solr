@@ -16,20 +16,14 @@
           <v-row>
             <v-col cols="4">
               <div class="btn-lq">
-                <v-btn flat hide-details @click="searchDetail">Tìm kiếm nâng cao</v-btn>
+                <v-btn @click="searchDetail">Tìm kiếm nâng cao</v-btn>
               </div>
             </v-col>
             <v-col cols="4"></v-col>
             <v-col cols="2">
               <div class="sohang">
                 <v-toolbar>
-                  <v-select
-                    flat
-                    hide-details
-                    v-model="rows"
-                    :items="[5,10,20,30,40,50]"
-                    label="Rows"
-                  ></v-select>
+                  <v-select hide-details v-model="rows" :items="[5,10,20,30,40,50]" label="Rows"></v-select>
                 </v-toolbar>
               </div>
             </v-col>
