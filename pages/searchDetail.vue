@@ -355,6 +355,7 @@ export default {
 
     async read(item) {
       await this.addClick(item.id);
+      console.log(item);
       this.dialog = true;
       this.title = item.title;
       this.description = item.description;

@@ -157,6 +157,7 @@ export default {
 
     async read(item) {
       await this.addClick(item.id);
+
       this.dialog = true;
       this.title = item.title;
       this.description = item.description;
