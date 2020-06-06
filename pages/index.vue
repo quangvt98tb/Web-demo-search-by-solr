@@ -34,8 +34,8 @@
         <v-col cols="2"></v-col>
         <v-col cols="8">
           <CardNews
-            :title="item.title"
-            :topic="item.topic_highlight"
+            :title="item.title_h"
+            :topic="item.topic_h"
             :description="item.description_highlight"
             :date="item.publish_date"
             :views="item.clicked"
@@ -141,7 +141,7 @@ export default {
 
         // highlight title
         if (!this.dataRes.hightlight[i].title) {
-          this.dataRes.results[i].title_h = this.dataRes.results[i].autitlethor;
+          this.dataRes.results[i].title_h = this.dataRes.results[i].title;
         } else {
           this.dataRes.results[i].title_h = this.dataRes.hightlight[i].title[0];
         }
