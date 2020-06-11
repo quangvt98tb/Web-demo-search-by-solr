@@ -106,7 +106,7 @@
       <br />
       <v-row v-for="(item, key) in this.list" :key="key">
         <v-col cols="2"></v-col>
-        <v-col cols="12">
+        <v-col cols="8">
           <CardNews
             :title="item.title_h"
             :topic="item.topic_h"
