@@ -21,7 +21,7 @@
                     <v-col cols="2">
                       <v-subheader class="pl-0">Title</v-subheader>
                     </v-col>
-                    <v-col cols="10">
+                    <v-col cols="4">
                       <v-slider
                         flat
                         hide-details
@@ -33,15 +33,10 @@
                         :thumb-size="24"
                       ></v-slider>
                     </v-col>
-                  </v-toolbar>
-                </v-row>
-
-                <v-row>
-                  <v-toolbar>
                     <v-col cols="2">
                       <v-subheader class="pl-0">Topic</v-subheader>
                     </v-col>
-                    <v-col cols="10">
+                    <v-col cols="14">
                       <v-slider
                         flat
                         hide-details
@@ -55,12 +50,13 @@
                     </v-col>
                   </v-toolbar>
                 </v-row>
+
                 <v-row>
                   <v-toolbar>
                     <v-col cols="2">
                       <v-subheader class="pl-0">Description</v-subheader>
                     </v-col>
-                    <v-col cols="10">
+                    <v-col cols="4">
                       <v-slider
                         flat
                         hide-details
@@ -72,14 +68,10 @@
                         :thumb-size="24"
                       ></v-slider>
                     </v-col>
-                  </v-toolbar>
-                </v-row>
-                <v-row>
-                  <v-toolbar>
                     <v-col cols="2">
                       <v-subheader class="pl-0">Content</v-subheader>
                     </v-col>
-                    <v-col cols="10">
+                    <v-col cols="4">
                       <v-slider
                         flat
                         hide-details
@@ -98,7 +90,7 @@
                     <v-col cols="2">
                       <v-subheader class="pl-0">Author</v-subheader>
                     </v-col>
-                    <v-col cols="10">
+                    <v-col cols="4">
                       <v-slider
                         flat
                         hide-details
@@ -110,14 +102,10 @@
                         :thumb-size="24"
                       ></v-slider>
                     </v-col>
-                  </v-toolbar>
-                </v-row>
-                <v-row>
-                  <v-toolbar>
                     <v-col cols="2">
                       <v-subheader class="pl-0">Date</v-subheader>
                     </v-col>
-                    <v-col cols="10">
+                    <v-col cols="4">
                       <v-slider
                         flat
                         hide-details
@@ -131,21 +119,26 @@
                     </v-col>
                   </v-toolbar>
                 </v-row>
-              </div>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="4">
-              <div class="searchNC">
-                <v-btn @click="searchDetail">Tìm kiếm nâng cao</v-btn>
-              </div>
-            </v-col>
-            <v-col cols="4"></v-col>
-            <v-col cols="2">
-              <div class="sohang">
-                <v-toolbar>
-                  <v-select hide-details v-model="rows" :items="[5,10,20,30,40,50]" label="Rows"></v-select>
-                </v-toolbar>
+                <v-row>
+                  <v-toolbar>
+                    <v-col cols="4">
+                      <div class="searchNC">
+                        <v-btn @click="searchDetail" color="primary">Tìm kiếm nâng cao</v-btn>
+                      </div>
+                    </v-col>
+                    <v-col cols="6"></v-col>
+                    <v-col cols="2">
+                      <div class="sohang">
+                        <v-select
+                          hide-details
+                          v-model="rows"
+                          :items="[5,10,20,30,40,50]"
+                          label="Rows"
+                        ></v-select>
+                      </div>
+                    </v-col>
+                  </v-toolbar>
+                </v-row>
               </div>
             </v-col>
           </v-row>
@@ -316,15 +309,5 @@ export default {
 .toolbarr {
   padding-left: 30px;
   padding-right: 20px;
-}
-.sohang {
-  padding-right: 10px;
-}
-.searchNC {
-  padding-left: 20px;
-}
-.v-toolbar__content,
-.v-toolbar__extension {
-  height: 50px;
 }
 </style>

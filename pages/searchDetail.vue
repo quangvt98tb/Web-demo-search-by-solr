@@ -19,7 +19,7 @@
 
       <v-row>
         <v-toolbar>
-          <v-col cols="12">
+          <v-col cols="6">
             <v-select
               :items="listTopic"
               flat
@@ -31,12 +31,7 @@
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-select>
           </v-col>
-        </v-toolbar>
-      </v-row>
-
-      <v-row>
-        <v-toolbar>
-          <v-col cols="12">
+          <v-col cols="6">
             <v-text-field solo-inverted flat hide-details label="Title" v-model="title_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
@@ -46,17 +41,12 @@
 
       <v-row>
         <v-toolbar>
-          <v-col cols="12">
+          <v-col cols="6">
             <v-text-field solo-inverted flat hide-details label="Author" v-model="author_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
-        </v-toolbar>
-      </v-row>
-
-      <v-row>
-        <v-toolbar>
-          <v-col cols="12">
+          <v-col cols="6">
             <v-text-field solo-inverted flat hide-details label="Content" v-model="content_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
@@ -66,7 +56,7 @@
 
       <v-row>
         <v-toolbar>
-          <v-col cols="12">
+          <v-col cols="6">
             <v-text-field
               solo-inverted
               flat
@@ -77,12 +67,7 @@
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
-        </v-toolbar>
-      </v-row>
-
-      <v-row>
-        <v-toolbar>
-          <v-col cols="12">
+          <v-col cols="6">
             <v-text-field solo-inverted flat hide-details label="Date" v-model="date_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
