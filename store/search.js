@@ -27,6 +27,7 @@ export const actions = {
         try {
 
             const data = await this.$axios.$post(`${text}/fulltext`, docs)
+            console.log(1, data)
             for (let i = 0; i < data.results.length; i++) {
                 data.results[i].description = replaceAllText(data.results[i].description, '_', ' ');
                 data.results[i].author = replaceAllText(data.results[i].author, '_', ' ');
@@ -53,7 +54,7 @@ export const actions = {
                     data.hightlight[i].topic[0] = replaceAllText(data.hightlight[i].topic[0], '_', ' ');
                 }
             }
-
+            console.log(2, data)
             commit('SET_DATA_SEARCH', data)
             res.isSuccess = true
         }

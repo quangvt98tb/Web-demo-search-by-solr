@@ -14,8 +14,129 @@
             </div>
           </v-col>
           <v-row>
+            <v-col cols="10">
+              <div class="toolbarr">
+                <v-row>
+                  <v-toolbar>
+                    <v-col cols="2">
+                      <v-subheader class="pl-0">Title</v-subheader>
+                    </v-col>
+                    <v-col cols="10">
+                      <v-slider
+                        flat
+                        hide-details
+                        step="0.01"
+                        min="0"
+                        max="3"
+                        v-model="weight_title"
+                        thumb-label="always"
+                        :thumb-size="24"
+                      ></v-slider>
+                    </v-col>
+                  </v-toolbar>
+                </v-row>
+
+                <v-row>
+                  <v-toolbar>
+                    <v-col cols="2">
+                      <v-subheader class="pl-0">Topic</v-subheader>
+                    </v-col>
+                    <v-col cols="10">
+                      <v-slider
+                        flat
+                        hide-details
+                        step="0.01"
+                        min="0"
+                        max="3"
+                        v-model="weight_topic"
+                        thumb-label="always"
+                        :thumb-size="24"
+                      ></v-slider>
+                    </v-col>
+                  </v-toolbar>
+                </v-row>
+                <v-row>
+                  <v-toolbar>
+                    <v-col cols="2">
+                      <v-subheader class="pl-0">Description</v-subheader>
+                    </v-col>
+                    <v-col cols="10">
+                      <v-slider
+                        flat
+                        hide-details
+                        step="0.01"
+                        min="0"
+                        max="3"
+                        v-model="weight_description"
+                        thumb-label="always"
+                        :thumb-size="24"
+                      ></v-slider>
+                    </v-col>
+                  </v-toolbar>
+                </v-row>
+                <v-row>
+                  <v-toolbar>
+                    <v-col cols="2">
+                      <v-subheader class="pl-0">Content</v-subheader>
+                    </v-col>
+                    <v-col cols="10">
+                      <v-slider
+                        flat
+                        hide-details
+                        step="0.01"
+                        min="0"
+                        max="3"
+                        v-model="weight_content"
+                        thumb-label="always"
+                        :thumb-size="24"
+                      ></v-slider>
+                    </v-col>
+                  </v-toolbar>
+                </v-row>
+                <v-row>
+                  <v-toolbar>
+                    <v-col cols="2">
+                      <v-subheader class="pl-0">Author</v-subheader>
+                    </v-col>
+                    <v-col cols="10">
+                      <v-slider
+                        flat
+                        hide-details
+                        step="0.01"
+                        min="0"
+                        max="3"
+                        v-model="weight_author"
+                        thumb-label="always"
+                        :thumb-size="24"
+                      ></v-slider>
+                    </v-col>
+                  </v-toolbar>
+                </v-row>
+                <v-row>
+                  <v-toolbar>
+                    <v-col cols="2">
+                      <v-subheader class="pl-0">Date</v-subheader>
+                    </v-col>
+                    <v-col cols="10">
+                      <v-slider
+                        flat
+                        hide-details
+                        step="0.01"
+                        min="0"
+                        max="3"
+                        v-model="weight_publish_date"
+                        thumb-label="always"
+                        :thumb-size="24"
+                      ></v-slider>
+                    </v-col>
+                  </v-toolbar>
+                </v-row>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
             <v-col cols="4">
-              <div class="btn-lq">
+              <div class="searchNC">
                 <v-btn @click="searchDetail">Tìm kiếm nâng cao</v-btn>
               </div>
             </v-col>
@@ -93,6 +214,12 @@ export default {
       author: null,
       textSearch: null,
       //
+      weight_topic: 1.0,
+      weight_title: 1.0,
+      weight_description: 1.0,
+      weight_content: 1.0,
+      weight_author: 1.0,
+      weight_publish_date: 1.0,
       list: []
     };
   },
@@ -105,6 +232,12 @@ export default {
     async search() {
       const dataReq = {
         full_text: this.textSearch,
+        weight_topic: this.weight_topic,
+        weight_title: this.weight_title,
+        weight_description: this.weight_description,
+        weight_content: this.weight_content,
+        weight_author: this.weight_author,
+        weight_publish_date: this.weight_publish_date,
         rows: this.rows
       };
       await this.PostText(dataReq);
@@ -180,10 +313,18 @@ export default {
 .v-application .mb-4 {
   margin-bottom: 4px !important;
 }
-.btn-lq {
-  padding-left: 10px;
+.toolbarr {
+  padding-left: 30px;
+  padding-right: 20px;
 }
 .sohang {
   padding-right: 10px;
+}
+.searchNC {
+  padding-left: 20px;
+}
+.v-toolbar__content,
+.v-toolbar__extension {
+  height: 50px;
 }
 </style>

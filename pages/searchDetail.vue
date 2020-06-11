@@ -19,7 +19,7 @@
 
       <v-row>
         <v-toolbar>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-select
               :items="listTopic"
               flat
@@ -31,94 +31,42 @@
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-select>
           </v-col>
-
-          <v-col cols="4">
-            <v-slider
-              flat
-              hide-details
-              step="0.01"
-              min="0"
-              max="3"
-              v-model="topic_s.slider"
-              thumb-label="always"
-              :thumb-size="24"
-            ></v-slider>
-          </v-col>
         </v-toolbar>
       </v-row>
 
       <v-row>
         <v-toolbar>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-text-field solo-inverted flat hide-details label="Title" v-model="title_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
-
-          <v-col cols="4">
-            <v-slider
-              flat
-              hide-details
-              step="0.01"
-              min="0"
-              max="3"
-              v-model="title_s.slider"
-              thumb-label="always"
-              :thumb-size="24"
-            ></v-slider>
-          </v-col>
         </v-toolbar>
       </v-row>
 
       <v-row>
         <v-toolbar>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-text-field solo-inverted flat hide-details label="Author" v-model="author_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
-
-          <v-col cols="4">
-            <v-slider
-              flat
-              hide-details
-              step="0.01"
-              min="0"
-              max="3"
-              v-model="author_s.slider"
-              thumb-label="always"
-              :thumb-size="24"
-            ></v-slider>
-          </v-col>
         </v-toolbar>
       </v-row>
 
       <v-row>
         <v-toolbar>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-text-field solo-inverted flat hide-details label="Content" v-model="content_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
-
-          <v-col cols="4">
-            <v-slider
-              flat
-              hide-details
-              step="0.01"
-              min="0"
-              max="3"
-              v-model="content_s.slider"
-              thumb-label="always"
-              :thumb-size="24"
-            ></v-slider>
-          </v-col>
         </v-toolbar>
       </v-row>
 
       <v-row>
         <v-toolbar>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-text-field
               solo-inverted
               flat
@@ -129,40 +77,15 @@
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
-
-          <v-col cols="4">
-            <v-slider
-              flat
-              hide-details
-              step="0.01"
-              min="0"
-              max="3"
-              v-model="description_s.slider"
-              thumb-label="always"
-              :thumb-size="24"
-            ></v-slider>
-          </v-col>
         </v-toolbar>
       </v-row>
 
       <v-row>
         <v-toolbar>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-text-field solo-inverted flat hide-details label="Date" v-model="date_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
-          </v-col>
-          <v-col cols="4">
-            <v-slider
-              flat
-              hide-details
-              step="0.01"
-              min="0"
-              max="3"
-              v-model="date_s.slider"
-              thumb-label="always"
-              :thumb-size="24"
-            ></v-slider>
           </v-col>
         </v-toolbar>
       </v-row>
@@ -183,7 +106,7 @@
       <br />
       <v-row v-for="(item, key) in this.list" :key="key">
         <v-col cols="2"></v-col>
-        <v-col cols="8">
+        <v-col cols="12">
           <CardNews
             :title="item.title_h"
             :topic="item.topic_h"
