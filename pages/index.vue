@@ -26,7 +26,7 @@
                         flat
                         hide-details
                         step="0.5"
-                        min="1"
+                        min="0"
                         max="8"
                         v-model="weight_title"
                         thumb-label="always"
@@ -41,7 +41,7 @@
                         flat
                         hide-details
                         step="0.5"
-                        min="1"
+                        min="0"
                         max="8"
                         v-model="weight_topic"
                         thumb-label="always"
@@ -61,7 +61,7 @@
                         flat
                         hide-details
                         step="0.5"
-                        min="1"
+                        min="0"
                         max="8"
                         v-model="weight_description"
                         thumb-label="always"
@@ -76,7 +76,7 @@
                         flat
                         hide-details
                         step="0.5"
-                        min="1"
+                        min="0"
                         max="8"
                         v-model="weight_content"
                         thumb-label="always"
@@ -95,7 +95,7 @@
                         flat
                         hide-details
                         step="0.5"
-                        min="1"
+                        min="0"
                         max="8"
                         v-model="weight_author"
                         thumb-label="always"
@@ -110,7 +110,7 @@
                         flat
                         hide-details
                         step="0.5"
-                        min="1"
+                        min="0"
                         max="8"
                         v-model="weight_publish_date"
                         thumb-label="always"
@@ -132,7 +132,7 @@
                         <v-select
                           hide-details
                           v-model="rows"
-                          :items="[5,10,30,40,50, 100, 'unlimited']"
+                          :items="[5,10,50, 100, 'unlimited']"
                           label="Rows"
                         ></v-select>
                       </div>

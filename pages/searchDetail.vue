@@ -77,7 +77,7 @@
               flat
               hide-details
               v-model="rows"
-              :items="[5,10,20,30,40,50,100,'unlimited']"
+              :items="[5,10,50,100,'unlimited']"
               label="Rows"
             ></v-select>
           </v-col>
