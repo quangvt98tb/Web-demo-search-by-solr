@@ -8,7 +8,7 @@
         <v-col cols="10">
           <v-col cols="10">
             <div @keyup.enter="search">
-              <v-text-field solo-inverted flat hide-details label="Tìm kiếm" v-model="textSearch">
+              <v-text-field flat hide-details label="Tìm kiếm" v-model="textSearch">
                 <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
               </v-text-field>
             </div>
@@ -25,9 +25,9 @@
                       <v-slider
                         flat
                         hide-details
-                        step="0.01"
-                        min="0"
-                        max="3"
+                        step="0.5"
+                        min="1"
+                        max="8"
                         v-model="weight_title"
                         thumb-label="always"
                         :thumb-size="24"
@@ -40,9 +40,9 @@
                       <v-slider
                         flat
                         hide-details
-                        step="0.01"
-                        min="0"
-                        max="3"
+                        step="0.5"
+                        min="1"
+                        max="8"
                         v-model="weight_topic"
                         thumb-label="always"
                         :thumb-size="24"
@@ -60,9 +60,9 @@
                       <v-slider
                         flat
                         hide-details
-                        step="0.01"
-                        min="0"
-                        max="3"
+                        step="0.5"
+                        min="1"
+                        max="8"
                         v-model="weight_description"
                         thumb-label="always"
                         :thumb-size="24"
@@ -75,9 +75,9 @@
                       <v-slider
                         flat
                         hide-details
-                        step="0.01"
-                        min="0"
-                        max="3"
+                        step="0.5"
+                        min="1"
+                        max="8"
                         v-model="weight_content"
                         thumb-label="always"
                         :thumb-size="24"
@@ -94,9 +94,9 @@
                       <v-slider
                         flat
                         hide-details
-                        step="0.01"
-                        min="0"
-                        max="3"
+                        step="0.5"
+                        min="1"
+                        max="8"
                         v-model="weight_author"
                         thumb-label="always"
                         :thumb-size="24"
@@ -109,9 +109,9 @@
                       <v-slider
                         flat
                         hide-details
-                        step="0.01"
-                        min="0"
-                        max="3"
+                        step="0.5"
+                        min="1"
+                        max="8"
                         v-model="weight_publish_date"
                         thumb-label="always"
                         :thumb-size="24"
@@ -132,7 +132,7 @@
                         <v-select
                           hide-details
                           v-model="rows"
-                          :items="[5,10,20,30,40,50]"
+                          :items="[5,10,30,40,50, 100, 'unlimited']"
                           label="Rows"
                         ></v-select>
                       </div>
@@ -144,7 +144,10 @@
           </v-row>
 
           <br />
-          <h3>Có {{ this.list.length }} kết quả tìm kiếm</h3>
+          <h3>
+            Có
+            <em>{{number_result}}</em> kết quả tìm kiếm
+          </h3>
         </v-col>
       </v-row>
 
@@ -196,6 +199,7 @@ export default {
   },
   data() {
     return {
+      number_result: 0,
       rows: 5,
       word_similar: false,
       dialog: false,
@@ -217,7 +221,14 @@ export default {
     };
   },
   computed: {
-    ...mapState("search", ["dataRes"])
+    ...mapState("search", ["dataRes"]),
+    numberR() {
+      if (!this.list.length) {
+        return 0;
+      } else {
+        return this.list.length;
+      }
+    }
   },
   methods: {
     ...mapActions("search", ["PostText", "addClick"]),
@@ -234,34 +245,44 @@ export default {
         rows: this.rows
       };
       await this.PostText(dataReq);
-      for (let i = 0; i < this.dataRes.results.length; i++) {
-        // highlight description
-        if (!this.dataRes.hightlight[i].description) {
-          if (!this.dataRes.hightlight[i].content) {
+      if (!this.dataRes.results.length) {
+        this.number_result = 0;
+      } else {
+        this.number_result = this.dataRes.results.length;
+
+        for (let i = 0; i < this.dataRes.results.length; i++) {
+          // highlight description
+          if (!this.dataRes.hightlight[i].description) {
+            if (!this.dataRes.hightlight[i].content) {
+              this.dataRes.results[
+                i
+              ].description_highlight = this.dataRes.results[i].description;
+            } else {
+              this.dataRes.results[i].description_highlight =
+                "..." + this.dataRes.hightlight[i].content[0];
+            }
+          } else {
             this.dataRes.results[
               i
-            ].description_highlight = this.dataRes.results[i].description;
-          } else {
-            this.dataRes.results[i].description_highlight =
-              "..." + this.dataRes.hightlight[i].content[0];
+            ].description_highlight = this.dataRes.hightlight[i].description[0];
           }
-        } else {
-          this.dataRes.results[
-            i
-          ].description_highlight = this.dataRes.hightlight[i].description[0];
-        }
-        // highlight topic
-        if (!this.dataRes.hightlight[i].topic) {
-          this.dataRes.results[i].topic_h = this.dataRes.results[i].topic;
-        } else {
-          this.dataRes.results[i].topic_h = this.dataRes.hightlight[i].topic[0];
-        }
+          // highlight topic
+          if (!this.dataRes.hightlight[i].topic) {
+            this.dataRes.results[i].topic_h = this.dataRes.results[i].topic;
+          } else {
+            this.dataRes.results[i].topic_h = this.dataRes.hightlight[
+              i
+            ].topic[0];
+          }
 
-        // highlight title
-        if (!this.dataRes.hightlight[i].title) {
-          this.dataRes.results[i].title_h = this.dataRes.results[i].title;
-        } else {
-          this.dataRes.results[i].title_h = this.dataRes.hightlight[i].title[0];
+          // highlight title
+          if (!this.dataRes.hightlight[i].title) {
+            this.dataRes.results[i].title_h = this.dataRes.results[i].title;
+          } else {
+            this.dataRes.results[i].title_h = this.dataRes.hightlight[
+              i
+            ].title[0];
+          }
         }
       }
       this.list = Object.assign({}, this.dataRes.results);

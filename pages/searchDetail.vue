@@ -32,7 +32,7 @@
             </v-select>
           </v-col>
           <v-col cols="6">
-            <v-text-field solo-inverted flat hide-details label="Title" v-model="title_s.text">
+            <v-text-field flat hide-details label="Title" v-model="title_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
@@ -42,12 +42,12 @@
       <v-row>
         <v-toolbar>
           <v-col cols="6">
-            <v-text-field solo-inverted flat hide-details label="Author" v-model="author_s.text">
+            <v-text-field flat hide-details label="Author" v-model="author_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
           <v-col cols="6">
-            <v-text-field solo-inverted flat hide-details label="Content" v-model="content_s.text">
+            <v-text-field flat hide-details label="Content" v-model="content_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
@@ -57,18 +57,12 @@
       <v-row>
         <v-toolbar>
           <v-col cols="6">
-            <v-text-field
-              solo-inverted
-              flat
-              hide-details
-              label="Description"
-              v-model="description_s.text"
-            >
+            <v-text-field flat hide-details label="Description" v-model="description_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
           <v-col cols="6">
-            <v-text-field solo-inverted flat hide-details label="Date" v-model="date_s.text">
+            <v-text-field flat hide-details label="Date" v-model="date_s.text">
               <v-icon slot="prepend-inner" color="#b9b9b3">mdi-magnify</v-icon>
             </v-text-field>
           </v-col>
@@ -79,14 +73,20 @@
         <v-toolbar>
           <div class="flex-grow-1"></div>
           <v-col cols="2">
-            <v-select flat hide-details v-model="rows" :items="[5,10,20,30,40,50]" label="Rows"></v-select>
+            <v-select
+              flat
+              hide-details
+              v-model="rows"
+              :items="[5,10,20,30,40,50,100,'unlimited']"
+              label="Rows"
+            ></v-select>
           </v-col>
           <v-btn color="primary" @click="searchDetail">Tìm kiếm</v-btn>
         </v-toolbar>
       </v-row>
       <br />
       <v-row>
-        <h3>Có các kết quả tìm kiếm</h3>
+        <h3>Có {{ number_result }} kết quả tìm kiếm</h3>
       </v-row>
       <br />
       <v-row v-for="(item, key) in this.list" :key="key">
@@ -154,7 +154,7 @@ export default {
       ],
       rows: 10,
       word_similar: false,
-
+      number_result: 0,
       dialog: false,
       title: null,
       topic: null,
@@ -220,7 +220,11 @@ export default {
         weight_publish_date: this.date_s.slider
       };
       await this.DetailSearch(dataReq);
-
+      if (!this.dataRes.results.length) {
+        this.number_result = 0;
+      } else {
+        this.number_result = this.dataRes.results.length;
+      }
       for (let i = 0; i < this.dataRes.results.length; i++) {
         // highlight description
         if (!this.dataRes.hightlight[i].description) {
